@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const app = express();
 const router = require("./router");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // DB Setup
 
@@ -18,6 +19,7 @@ connection.on("connected", function() {
 
 //App Setup
 app.use(morgan("combined")); //morgain is used for debugg
+app.use(cors());
 app.use(bodyParser.json({ type: "*/*" })); //bodyParser is used to make any incoming request will be passed into json
 router(app);
 
